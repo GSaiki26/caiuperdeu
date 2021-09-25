@@ -1,2 +1,3 @@
 discord ## Discord lib
 termcolor ## Colored text.
+PyNaCl ## Join voice chat.
