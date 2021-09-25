@@ -7,6 +7,7 @@ from discord.ext import commands ## Discord.
 
 ## Data
 bot = commands.Bot('!', None) ## Get the bot.
+bot.activity
 TOKEN = input(colored('Please write the bot\'s token: ', 'cyan')) ## The constant to store the bot token.
 
 ## Methods
@@ -17,6 +18,7 @@ def EmbedMessage(title: str, descr: str = ''): ## Create and return a embed mess
 ## Routes
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Streaming(name='Made by Saiki#2044', url='https://twitch.tv/GSaiki26'))
     print(colored(f'[{bot.user}] is ready!','magenta'))
 
 @bot.command('ping')
