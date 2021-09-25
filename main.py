@@ -16,7 +16,6 @@ DESCRIPTION_URL = 'https://twitch.tv/GSaiki26'
 ## Data
 bot = commands.Bot('!', None) ## Get the bot.
 players = {} ## Dict to store the player
-
 ## Sup Methods
 def TreatTime(seconds: float) -> str: ## Return a stringify time.
     return strftime('%H:%M:%S', gmtime(seconds))
@@ -141,9 +140,10 @@ async def Play(ctx: object):
     ## Sttar the Game
     await StartGame(ctx, channel)
 
-@bot.command('history')
-async def History(ctx: object):
-    await ctx.send('Not ready.')
-
+@bot.command('help')
+async def Help(ctx: object):
+    message = await EmbedMessage('Ajuda')
+    message.add_field(name='!ping', value='Um comando usado no debug. Não tem uma função exata.')
+    message.add_field(name='!play', value='O comando para começar o jogo.')
 #3 Code
 bot.run(TOKEN) ## Run the bot.
