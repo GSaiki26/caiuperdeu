@@ -5,5 +5,5 @@ from termcolor import colored
 from src.Time import GetTime
 
 ## Methods
-def Write(text:str, color:str = 'magenta'): ## Method to write colored text.
+def Write(text:str, color:str = 'yellow'): ## Method to write colored text.
     print(colored(f'[{GetTime()}] {text}', color))
