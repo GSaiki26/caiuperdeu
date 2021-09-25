@@ -1,5 +1,10 @@
-## CaiuPerdeu
+# CaiuPerdeu
 The CaiuPerdeu is a discord bot to count how much time you can stay on a voice chat!
+
+## problems
+* The bot will not detect "old" player in the voice chat. So, you may need to disconect and join again;
+
+* The bot only speak Pt-BR.
 
 ## Commands
 
