@@ -5,10 +5,14 @@ from discord.ext import commands ## Discord.
 
 ## Local Libs
 
+## CONSTANTS
+TOKEN = input(colored('Please write the bot\'s token: ', 'cyan')) ## The constant to store the bot token.
+DESCRIPTION = 'Made by Saiki#2044'
+DESCRIPTION_URL = 'https://twitch.tv/GSaiki26'
+
 ## Data
 bot = commands.Bot('!', None) ## Get the bot.
-bot.activity
-TOKEN = input(colored('Please write the bot\'s token: ', 'cyan')) ## The constant to store the bot token.
+players = {} ## Dict to store the player
 
 ## Methods
 def EmbedMessage(title: str, descr: str = ''): ## Create and return a embed message.
@@ -18,7 +22,7 @@ def EmbedMessage(title: str, descr: str = ''): ## Create and return a embed mess
 ## Routes
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Streaming(name='Made by Saiki#2044', url='https://twitch.tv/GSaiki26'))
+    bot.change_presence(activity=discord.activity.Streaming(name=DESCRIPTION, url=DESCRIPTION_URL)) ## Change the description
     print(colored(f'[{bot.user}] is ready!','magenta'))
 
 @bot.command('ping')
@@ -29,7 +33,7 @@ async def Ping(ctx: object):
 
 @bot.command('play')
 async def Play(ctx: object):
-    await ctx.send('Not ready.')
+
 
 @bot.command('history')
 async def History(ctx: object):
