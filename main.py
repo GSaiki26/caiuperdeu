@@ -1,11 +1,11 @@
 ## Libs
-from time import sleep, strftime, gmtime
+from time import sleep
 import discord ## Discord.
 from termcolor import colored ## Colored text.
 from discord.ext import commands ## Discord.
 
 ## Local Libs
-from src.Time import Timer
+from src.Time import Timer, TreatTime
 from src.Log import Write as log
 
 ## CONSTANTS
@@ -17,8 +17,6 @@ DESCRIPTION_URL = 'https://twitch.tv/GSaiki26'
 bot = commands.Bot('!', None) ## Get the bot.
 players = {} ## Dict to store the player
 ## Sup Methods
-def TreatTime(seconds: float) -> str: ## Return a stringify time.
-    return strftime('%H:%M:%S', gmtime(seconds))
 
 ## Methods
 async def EmbedMessage(title: str, descr: str = '', ctx: object = None) -> discord.Embed: ## Create and return a embed message.
@@ -87,6 +85,7 @@ async def StartGame(ctx: object, channel): ## game.
         for player in players[GUILDID].items():
             if player[0] not in channel.members:
                 players[GUILDID][player[0]].update({'Alive':False}) ## Define the alive to false.
+                players[GUILDID][player[0]]['timer'].StopTime() ## Sto pthe user's time.
             else:
                 playersCount.append(player)
         if len(playersCount) <= 0: ## Check if the amount of player is zero or below.

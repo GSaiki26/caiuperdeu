@@ -1,5 +1,5 @@
 ## Libs
-from time import localtime, strftime, time
+from time import localtime, strftime, time, gmtime
 
 ## Data
 class Timer: ## Create and timer.
@@ -7,11 +7,19 @@ class Timer: ## Create and timer.
         self.initTime = time() ## Start the cronometer.
     
     def GetTime(self) -> float: ## Method to get the current time.
-        currentTime = time() - self.initTime ## Get the current time.
-        return round(currentTime, 2) ## Return the seconds.
+        if not self.stoppedTime:
+            currentTime = time() - self.initTime ## Get the current time.
+            return round(currentTime, 2) ## Return the seconds.
+        else:
+            return round(self.stoppedTime, 2) ## Return the seconds.
 
+    def StopTime(self) -> str:
+        self.stoppedTime = time() - self.initTime
+        return round(self.stoppedTime, 2) ## Return the seconds.
 ## Methods
 def GetTime() -> str:
     t = localtime() ## Get the localtime
-    return strftime('%H:%M:%S',t) ## Return the current time.
+    return  ## Return the current time.
 
+def TreatTime(seconds: float) -> str: ## Return a stringify time.
+    return strftime('%H:%M:%S', gmtime(seconds))
