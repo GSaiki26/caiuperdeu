@@ -2,8 +2,12 @@
 from json import loads
 from configparser import ConfigParser
 
+# local libs
+from interface.console import Console
+
 # data
 config_path = 'config/.conf'
+console = Console(prefix='Console')
 
 
 # Classes
@@ -35,8 +39,26 @@ class Config:
 
     def add_section(self, section: str) -> None:
         if not self.__config.has_section(section):
-            self.__config.add_section(section)
-            self.__save()
+            console.error('The .conf doen\'t exist! Please complete it.')
+            write_dotconf(section)
+            
 
     def __save(self) -> None:
         self.__config.write(open('.conf', 'w'))
+
+
+# Method
+def write_dotconf():
+    with open(config_path, 'w', encoding='utf-8') as file:
+        file.write(
+            '[DISCORD]\n'
+            'token=""\n'
+            'description="Made by Saiki#2044"\n'
+            'description_url="https://twitch.tv/GSaiki26"\n'
+            '[GAME]\n'
+            'delay=6\n'
+            '[CONSOLE]\n'
+            'color_text="magenta"\n'
+            'color_input="cyan"\n'
+            'color_error="red"\n'
+        )

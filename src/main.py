@@ -20,8 +20,8 @@ bot = commands.Bot('!', None)
 
 config = Config('DISCORD')
 TOKEN = config.get('token')
-DESCRIPTION = 'Made by Saiki#2044'
-DESCRIPTION_URL = 'https://twitch.tv/GSaiki26'
+DESCRIPTION = config.get('description')
+DESCRIPTION_URL = config.get('description_url')
 
 
 # Routes
