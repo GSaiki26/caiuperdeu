@@ -2,12 +2,8 @@
 from json import loads
 from configparser import ConfigParser
 
-# local libs
-from interface.console import Console
-
 # data
 config_path = 'config/.conf'
-console = Console(prefix='Console')
 
 
 # Classes
@@ -39,7 +35,7 @@ class Config:
 
     def add_section(self, section: str) -> None:
         if not self.__config.has_section(section):
-            console.error('The .conf doen\'t exist! Please complete it.')
+            print('[Error] The .conf doen\'t exist! Please complete it.')
             write_dotconf(section)
             
 
