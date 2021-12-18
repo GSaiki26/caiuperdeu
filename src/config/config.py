@@ -36,7 +36,7 @@ class Config:
     def add_section(self, section: str) -> None:
         if not self.__config.has_section(section):
             print('[Error] The .conf doen\'t exist! Please complete it.')
-            write_dotconf(section)
+            write_dotconf()
             
 
     def __save(self) -> None:
