@@ -1,6 +1,5 @@
-## Folders
-src/__pycache__
-
-## Files
-# Debug folder.
-temp.py
+# Folders
+.vscode
+**/.conf
+**/__pycache__/
+.env
