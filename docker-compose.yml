@@ -2,5 +2,6 @@ version: '3.7'
 services:
   caiu_perdeu:
     build: ./
+    container_name: caiu_perdeu-con
     volumes:
       - ./:/app
