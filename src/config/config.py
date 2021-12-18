@@ -3,7 +3,7 @@ from json import loads
 from configparser import ConfigParser
 
 # data
-config_path = 'config/.conf'
+config_path = 'src/config/.conf'
 
 
 # Classes
