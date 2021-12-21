@@ -13,6 +13,7 @@ from models.player import Player
 from config.config import Config
 from interface.console import Console
 from utils.discord import create_embed_message, join_voice_chat
+
 # Data
 console = Console()
 games: Dict[int, Game] = {}
@@ -69,6 +70,9 @@ async def Play(ctx: Context):
     # Start the game.
     game = Game(ctx, channel, players_dict)
     await game.run()
+
+    # Exit the voice chat.
+    await ctx.voice_client.disconnect()
 
 
 @bot.command('help')

@@ -3,5 +3,6 @@ services:
   caiu_perdeu:
     build: ./
     container_name: caiu_perdeu-con
+    restart: always
     volumes:
       - ./:/app
