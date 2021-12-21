@@ -1,9 +1,12 @@
 # Libs
+import os
 from json import loads
+from pathlib import Path
 from configparser import ConfigParser
 
 # data
-config_path = 'config/.conf'
+config_path = Path(
+    os.path.dirname(os.path.realpath(__file__)), '.conf')
 
 
 # Classes
@@ -35,8 +38,7 @@ class Config:
 
     def add_section(self, section: str) -> None:
         if not self.__config.has_section(section):
-            self.__config.add_section(section)
-            self.__save()
+            exit('[Error] The .conf doen\'t exist! Please complete it.')
 
     def __save(self) -> None:
         self.__config.write(open('.conf', 'w'))
