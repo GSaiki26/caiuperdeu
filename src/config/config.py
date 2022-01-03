@@ -6,7 +6,7 @@ from configparser import ConfigParser
 
 # data
 config_path = Path(
-    os.path.dirname(os.path.realpath(__file__)), '.conf')
+    os.path.dirname(os.path.realpath(__file__)), '.conf').absolute()
 
 
 # Classes
@@ -27,6 +27,8 @@ class Config:
             if convert_value:
                 return loads(value)
             return value
+        self.__config.set(self.__section, key, '""')
+        self.__save()
         return return_if_null
 
     def set(self, key: str, value: any) -> None:
@@ -38,7 +40,9 @@ class Config:
 
     def add_section(self, section: str) -> None:
         if not self.__config.has_section(section):
-            exit('[Error] The .conf doen\'t exist! Please complete it.')
+            self.__config.add_section(section)
+            self.__save()
+            print(f'The section {section} doesn\'t exist!')
 
     def __save(self) -> None:
-        self.__config.write(open('.conf', 'w'))
+        self.__config.write(open(config_path, 'w'))
